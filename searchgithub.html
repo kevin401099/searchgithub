@@ -1,7 +1,30 @@
 <center>
 <p id="demo" onclick="myFunction()">Enter Name of Repository</p>
-<input type="text" name="search" size="50" id="input">
+<input type="text" name="search" size="50" id="input" onkeypress="fnTrapKD('btnSubmit',event);">
 <input type="submit" value="Submit" id="search"onclick="myFunction()">
+<script>
+function fnTrapKD(btn, event)
+{
+    if (document.all)
+    {
+        if (event.keyCode == 13)
+        {
+            event.returnValue=false;
+            event.cancel = true;
+            search.click();
+        }
+    }
+    else
+    {
+        if (event.which == 13)
+        {
+            event.returnValue=false;
+            event.cancelBubble = true;
+            search.click();
+        }
+    }
+}
+</script>
 <script>
 function myFunction() {
     document.close();
@@ -140,7 +163,7 @@ function myFunction() {
     document.write("</style>");
     document.write("<div><center>");
     document.write("<p id=\"demo\" onclick=\"myFunction()\">Enter Name of Repository</p>");
-    document.write("<input type=\"text\" name=\"search\" size=\"50\" id=\"input\" >");
+    document.write("<input type=\"text\" name=\"search\" size=\"50\" id=\"input\" onkeypress=\"fnTrapKD('btnSubmit',event);\">");
     document.write("<input type=\"submit\" value=\"Submit\" id=\"search\"onclick=\"myFunction()\"><p>");
     document.write("</center></div>");
     document.write("<table style=\"width:40%\"");
